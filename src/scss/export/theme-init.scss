@@ -10,14 +10,16 @@
     padding-inline: var(--spacing-md);
     height: auto;
     min-height: auto;
-    border-radius: .3125rem;
+    border-radius: 0rem;
+    border: .0625rem solid var(--color-background-muted);
+    background-color: var(--color-background-muted);
 
     &, &:focus-visible {
       box-shadow: none;
     }
 
     &:focus-visible {
-      border-color: var(--gray-color-950);
+      border-color: var(--color-text-muted);
     }
   }
 

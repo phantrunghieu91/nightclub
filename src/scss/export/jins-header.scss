@@ -1,0 +1,13 @@
+.header {
+  &.header {
+    container: header / inline-size;
+  }
+
+  &-top {
+    background-color: var(--color-background-main);
+  }
+
+  &-bg-color {
+    background-color: var(--color-background-main);
+  }
+}

@@ -1,49 +1,6 @@
 @use '../bases';
 @use '../components/jins-button';
 @use '../components/jins-card';
-@layer base {
-  :root {
-    // Colors
-    @each $i, $color in $primaryColors {
-      --primary-color-#{$i}: #{$color};
-    }
-    @each $i, $color in $secondaryColors {
-      --secondary-color-#{$i}: #{$color};
-    }
-    @each $i, $color in $tertiaryColors {
-      --tertiary-color-#{$i}: #{$color};
-    }
-    @each $i, $color in $grayColors {
-      --gray-color-#{$i}: #{$color};
-    }
-    --success-color-500: #22c55e;
-    --danger-color-500: #f43f5e;
-
-    --gpw-color-500: #f7941d;
-    // Screen size
-    @each $i, $screen in $breakpoints {
-      --screen-#{$i}: #{$screen};
-    }
-    // Spacing:
-    @each $i, $size in $spacing {
-      --spacing-#{$i}: #{$size};
-    }
-    // Font size
-    @each $i, $size in $font-sizes {
-      --fs-#{$i}: #{$size};
-    }
-    // shadow
-    @each $i, $shadow in $shadows {
-      --shadow-#{$i}: #{$shadow};
-    }
-
-    // text color
-    --base-color: var(--gray-color-950);
-    --heading-color: var(--primary-color-500);
-
-    --transition-duration: 250ms;
-  }
-}
 
 .wpcf7 {
   &-form-control:is(input[type=text], input[type=email], input[type=tel], select, input[type=date], textarea) {

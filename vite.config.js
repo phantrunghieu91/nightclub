@@ -160,21 +160,21 @@ const config = defineConfig({
   // --------------------------------
   // Plugins
   // --------------------------------
-  // plugins: [
-  //   {
-  //     name: 'sftp-upload',
-  //     apply: 'build',
-  //     closeBundle: async () => {
-  //       console.log('🚀 Uploading assets to server...\n');
+  plugins: [
+    {
+      name: 'sftp-upload',
+      apply: 'build',
+      closeBundle: async () => {
+        console.log('🚀 Uploading assets to server...\n');
 
-  //       await uploadDirToSFTP(path.resolve(__dirname, 'assets/css'), `${process.env.REMOTE_PATH}/assets/css`);
+        await uploadDirToSFTP(path.resolve(__dirname, 'assets/css'), `${process.env.REMOTE_PATH}/assets/css`);
 
-  //       await uploadDirToSFTP(path.resolve(__dirname, 'assets/js'), `${process.env.REMOTE_PATH}/assets/js`);
+        await uploadDirToSFTP(path.resolve(__dirname, 'assets/js'), `${process.env.REMOTE_PATH}/assets/js`);
 
-  //       console.log('🎉 Upload completed!');
-  //     },
-  //   },
-  // ],
+        console.log('🎉 Upload completed!');
+      },
+    },
+  ],
 });
 
 export default config;

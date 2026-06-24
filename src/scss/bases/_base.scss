@@ -1,15 +1,84 @@
+@use '../abstracts/' as *;
+
 @layer base {
+  :root {
+    // Colors
+    @each $i, $color in $primaryColors {
+      --primary-color-#{$i}: #{$color};
+    }
+    @each $i, $color in $secondaryColors {
+      --secondary-color-#{$i}: #{$color};
+    }
+    @each $i, $color in $grayColors {
+      --gray-color-#{$i}: #{$color};
+    }
+
+    --success-color-500: #22c55e;
+    --danger-color-500: #f43f5e;
+
+    --gpw-color-500: #f7941d;
+
+    --color-background-main: oklch( 0 0 0 / 1 );
+    --color-background-muted: var(--gray-color-300);
+
+    --color-text-base: var(--wp--preset--color--white);
+    --color-text-muted: oklch( form var(--color-text-base) l c h / .8 );
+    --color-heading-base: var(--color-text-base);
+    --color-heading-accent: var(--primary-color-500);
+
+    // Screen size
+    @each $i, $screen in $breakpoints {
+      --screen-#{$i}: #{$screen};
+    }
+    // Spacing:
+    @each $i, $size in $spacing {
+      --spacing-#{$i}: #{$size};
+    }
+    // Font size
+    @each $i, $size in $font-sizes {
+      --fs-#{$i}: #{$size};
+    }
+    // shadow
+    @each $i, $shadow in $shadows {
+      --shadow-#{$i}: #{$shadow};
+    }
+
+    --transition-duration: 250ms;
+  }
+
   html > body {
-    color: var(--base-color);
+    color: var(--color-text-base);
     font-size: var(--fs-normal);
     line-height: 1.5;
+  }
 
-    p {
-      margin-bottom: var(--spacing-xs);
+  p {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-heading-base);
+  }
+
+  blockquote {
+    font-size: var(--fs-normal);
+    border-color: var(--primary-color-500);
+
+    &:has( + * ) {
+      margin-block-end: 1.25em;
+    }
+  }
+
+  a {
+    color: var(--color-text-muted);
+
+    &:hover {
+      color: var(--secondary-color-500);
     }
   }
 
   #content {
     container: content / inline-size;
+    background-color: var(--color-background-main);
   }
 }

@@ -54,7 +54,8 @@ class Register extends BaseController {
     $this->enqueueStyle( 'theme-init', time() );
     $this->enqueueStyle( 'google-symbols', null, 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200' );
 
-    $this->enqueueStyle( 'gpw-footer', time() );
+    $this->enqueueStyle( 'jins-header', time() );
+    $this->enqueueStyle( 'jins-footer', time() );
 
     // * Enqueue swiper for page that needs it
     if( is_front_page() ) {

@@ -41,7 +41,10 @@ class Register extends BaseController {
    * Sets the shortcodes.
    */
   protected function setShortcodes() {
-    $this->shortcodes = [];
+    $this->shortcodes = [
+      new \gpweb\shortcodes\JinsSocials('jins_socials'),
+      new \gpweb\shortcodes\PhoneNumbers('phone_numbers'),
+    ];
   }
   
   /**

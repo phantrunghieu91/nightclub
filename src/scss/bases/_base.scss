@@ -1,0 +1,15 @@
+@layer base {
+  html > body {
+    color: var(--base-color);
+    font-size: var(--fs-normal);
+    line-height: 1.5;
+
+    p {
+      margin-bottom: var(--spacing-xs);
+    }
+  }
+
+  #content {
+    container: content / inline-size;
+  }
+}

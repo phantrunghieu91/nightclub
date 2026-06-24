@@ -1,0 +1,204 @@
+@layer components {
+  .jins-button {
+    $class: &;
+
+    padding: var(--_padding-block, .125rem) var(--_padding-inline, .3125rem);
+    width: var(--_width, fit-content);
+    min-height: unset;
+    margin: 0;
+    display: block;
+
+    background-color: var(--_background-color, transparent);
+    border: var(--_border-width, .0625rem) solid var(--_border-color, transparent);
+    border-radius: var(--_border-radius, none);
+
+    color: var(--_text-color, var(--base-color));
+    font-size: var(--_font-size, var(--fs-sm));
+    font-weight: var(--_font-weight, 400);
+    line-height: var(--_line-height, 1.5);
+    text-transform: var(--_text-transform, none);
+    text-align: var(--_text-align, center);
+    text-decoration: var(--_text-decoration, none);
+
+    transition-duration: var(--_transition-duration, var(--transition-duration));
+    transition-property: background-color, color, border-color;
+
+    &:is(:hover, :focus-visible) {
+      background-color: var(--_hover-background-color, transparent);
+      border-color: var(--_hover-border-color, transparent);
+      color: var(--_hover-text-color, var(--primary-color-500));
+    }
+
+    &:has(.material-symbols-outlined) {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    &__text, .material-symbols-outlined, [data-variant=slide-bg]:before {
+      pointer-events: none;
+    }
+
+    // ---- Position: Default is left
+    &[data-position=center] {
+      margin-inline: auto;
+    }
+
+    &[data-position=right] {
+      margin-inline-start: auto;
+    }
+
+    // ---- Width
+    &[data-width=full] {
+      --_width: 100%;
+
+      &:has(.material-symbols-outlined) {
+        justify-content: center;
+      }
+    }
+
+    // ---- Size: Default is extra small
+    &[data-size=small] {
+      --_padding-block: var(--spacing-xs);
+      --_padding-inline: var(--spacing-sm);
+      --_font-size: var(--fs-normal);
+    }
+    
+    &[data-size=medium] {
+      --_padding-block: var(--spacing-sm);
+      --_padding-inline: var(--spacing-md);
+      --_font-size: var(--fs-normal);
+    }
+
+    &[data-size=large] {
+      --_padding-block: var(--spacing-md);
+      --_padding-inline: var(--spacing-lg);
+      --_font-size: var(--fs-md);
+      --_line-height: 1.4;
+    }
+
+    // ---- Corner rounded: Default is border radius 'none'
+    &[data-rounded=small] {
+      --_border-radius: .3125rem; 
+    }
+    
+    &[data-rounded=medium] {
+      --_border-radius: .5rem;
+    }
+
+    &[data-rounded=large] {
+      --_border-radius: .75rem;
+    }
+
+    // ---- Colors
+    // Each color modifier sets accent tokens (used by variants like outlined, slide-bg)
+    // and solid-state tokens (background, text, hover) for the default filled appearance.
+    // The --outlined combined selectors below override background back to transparent.
+
+    &[data-theme=primary] {
+      --_accent-color: var(--primary-color-500);
+      --_accent-color-hover: var(--primary-color-400);
+      --_text-color: var(--wp--preset--color--white);
+      --_background-color: var(--primary-color-500);
+      --_border-color: var(--primary-color-500);
+      --_hover-background-color: var(--primary-color-400);
+      --_hover-border-color: var(--primary-color-400);
+      --_hover-text-color: var(--wp--preset--color--white);
+    }
+
+    &[data-theme=secondary] {
+      --_accent-color: var(--secondary-color-500);
+      --_accent-color-hover: var(--secondary-color-400);
+      --_text-color: var(--wp--preset--color--white);
+      --_background-color: var(--secondary-color-500);
+      --_border-color: var(--secondary-color-500);
+      --_hover-background-color: var(--secondary-color-400);
+      --_hover-border-color: var(--secondary-color-400);
+      --_hover-text-color: var(--wp--preset--color--white);
+    }
+
+    &[data-theme=tertiary] {
+      --_accent-color: var(--tertiary-color-500);
+      --_accent-color-hover: var(--tertiary-color-400);
+      --_text-color: var(--wp--preset--color--white);
+      --_background-color: var(--tertiary-color-500);
+      --_border-color: var(--tertiary-color-500);
+      --_hover-background-color: var(--tertiary-color-400);
+      --_hover-border-color: var(--tertiary-color-400);
+      --_hover-text-color: var(--wp--preset--color--white);
+    }
+
+    // ---- Variants (shape) — composable, each owns only its own properties
+    &[data-variant=outline] {
+      --_border-color: var(--_text-color, var(--base-color));
+      --_hover-border-color: var(--_accent-color, var(--base-color));
+      --_hover-background-color: var(--_accent-color, var(--base-color));
+      --_hover-text-color: var(--wp--preset--color--white);
+    }
+
+    &[data-variant=pill] {
+      --_border-radius: 999px;
+    }
+
+    &[data-variant=slide-bg] {
+      --_border-color: var(--accent-color, var(--base-color));
+      --_text-color: var(--_accent-color, var(--base-color));
+      --_hover-border-color: var(--_hover-accent-color, var(--base-color));
+      --_hover-background-color: transparent;
+      --_hover-text-color: var(--wp--preset--color--white);
+
+      position: relative;
+      overflow: hidden;
+
+      span {
+        position: relative;
+        z-index: 2;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        background-color: var(--_slide-bg-clr, var(--_accent-color, var(--base-color)));
+        transform: scaleX(0);
+        transform-origin: right center;
+        transition: transform 300ms ease-in-out;
+      }
+
+      &:is(:hover, :focus-visible)::before {
+        transform: scaleX(1);
+        transform-origin: left center;
+      }
+    }
+
+    // ---- outlined + color combinations
+    // outlined always wins: transparent bg, accent-colored text and border.
+    // Hover fills with the accent color.
+    &[data-variant=outline] {
+      &[data-theme=primary],
+      &[data-theme=secondary],
+      &[data-theme=tertiary] {
+        --_background-color: transparent;
+        --_text-color: var(--_accent-color);
+        --_border-color: var(--_accent-color);
+        --_hover-background-color: var(--_accent-color);
+        --_hover-border-color: var(--_accent-color);
+        --_hover-text-color: var(--wp--preset--color--white);
+      }
+    }
+
+    &[data-variant=slide-bg] {
+      &[data-theme=primary],
+      &[data-theme=secondary],
+      &[data-theme=tertiary] {
+        --_background-color: transparent;
+        --_text-color: var(--_accent-color);
+        --_border-color: var(--_accent-color);
+        --_hover-background-color: transparent;
+        --_hover-border-color: var(--_accent-color);
+        --_hover-text-color: var(--wp--preset--color--white);
+      }
+    }
+  }
+}

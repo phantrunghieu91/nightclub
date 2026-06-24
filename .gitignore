@@ -1,0 +1,17 @@
+.DS_Store
+.vscode
+.env
+node_modules
+not-upload
+.php-cs-fixer.dist.php
+
+/assets/css/*
+/assets/js/*
+!/assets/css/aos.min.css
+!/assets/js/aos.min.js
+!/assets/css/swiper.min.css
+!/assets/js/swiper.min.js
+!/assets/css/fancybox.min.css
+!/assets/js/fancybox.min.js
+!/assets/js/gsap.min.js
+!/assets/js/ScrollTrigger.min.js

@@ -1,0 +1,45 @@
+<?php
+/**
+ * @author Hieu "JIN" Phan Trung
+ * * Controller: Company Information
+ */
+namespace gpweb\inc\controller;
+class CompanyInfo {
+  private static CompanyInfo $instance;
+  private string $address;
+  private string $email;
+  private string $phone;
+  private array $socials;
+  public static function getInstance(): CompanyInfo {
+    if( !isset( self::$instance ) ) {
+      self::$instance = new CompanyInfo();
+    }
+    return self::$instance;
+  }
+  public function register() {
+    add_action( 'init', [ $this, 'getDataFromACF' ] );
+  }
+  public function getDataFromACF() {
+    if( !function_exists( 'get_field' ) ) {
+      do_action( 'qm/debug', 'ACF function get_field does not exist. CompanyInfo controller cannot be initialized.' );
+      return;
+    }
+    $companyInfo   = get_field( 'company_information', 'gpw_settings' );
+    $this->address = $companyInfo['address']      ?? '';
+    $this->email   = $companyInfo['email']        ?? '';
+    $this->phone   = $companyInfo['phone_number'] ?? '';
+    $this->socials = $companyInfo['social']       ?? [];
+  }
+  public function getAddress() {
+    return $this->address;
+  }
+  public function getPhoneNumber() {
+    return $this->phone;
+  }
+  public function getEmail() {
+    return $this->email;
+  }
+  public function getSocials() {
+    return $this->socials;
+  }
+}

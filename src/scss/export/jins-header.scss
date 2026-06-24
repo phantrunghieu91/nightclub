@@ -10,4 +10,45 @@
   &-bg-color {
     background-color: var(--color-background-main);
   }
+
+  li.custom:has(.header__title) {
+    flex: 1;
+  }
+
+  .header__title {
+    margin-block-end: 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.875rem;
+
+    transition: translate var(--transition-duration), opacity var(--transition-duration);
+  }
+
+  .jins-socials {
+    --_icon-size: 1.5rem;
+    --_space-between-socials: .25rem;
+  }
+
+  &:has( .stuck ) {
+    .header__title {
+      translate: 0 -2rem;
+      opacity: 0;
+    }
+  }
+}
+
+.nav .current-menu-item a {
+  color: var(--secondary-color-500);
+}
+
+.off-canvas .mfp-content {
+  background: var(--color-background-main) linear-gradient(to right,#c31432,#240b36);
+
+  .nav-vertical > li + li {
+    border-top: 0.0625rem solid oklch( 1 0 0 / .05 );
+  }
+
+  .nav > .menu-item {
+    font-size: var(--fs-md);
+  }
 }

@@ -13,6 +13,8 @@
     }
 
     &__item {
+      margin-block-end: 0;
+
       img {
         width: var(--_icon-size);
         height: var(--_icon-size);
@@ -22,6 +24,8 @@
 }
 
 .wpcf7 {
+  color: var(--color-text-base);
+
   &-form-control:is(input[type=text], input[type=email], input[type=tel], select, input[type=date], textarea) {
     font-size: var(--fs-normal);
     line-height: 1.5;

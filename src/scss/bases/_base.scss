@@ -19,10 +19,10 @@
     --gpw-color-500: #f7941d;
 
     --color-background-main: oklch( 0 0 0 / 1 );
-    --color-background-muted: var(--gray-color-300);
+    --color-background-muted: var(--gray-color-700);
 
     --color-text-base: var(--wp--preset--color--white);
-    --color-text-muted: oklch( form var(--color-text-base) l c h / .8 );
+    --color-text-muted: oklch( from var(--color-text-base) l c h / .8 );
     --color-heading-base: var(--color-text-base);
     --color-heading-accent: var(--primary-color-500);
 
@@ -72,6 +72,8 @@
 
   a {
     color: var(--color-text-muted);
+
+    transition: color var(--transition-duration);
 
     &:hover {
       color: var(--secondary-color-500);

@@ -3,4 +3,9 @@
     text-wrap:balance;
     text-wrap: pretty;
   }
+
+  :where(ul, ol)[class] {
+    margin: 0;
+    list-style: none;
+  }
 }

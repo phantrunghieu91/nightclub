@@ -2,6 +2,25 @@
 @use '../components/jins-button';
 @use '../components/jins-card';
 
+@layer components {
+  .jins-socials {
+    --_icon-size: 2.5rem;
+
+    &__list {
+      display: flex;
+      flex-flow: var(--_direction, row) var(--_wrap, nowrap);
+      gap: var(--_space-between-socials, .5rem);
+    }
+
+    &__item {
+      img {
+        width: var(--_icon-size);
+        height: var(--_icon-size);
+      }
+    }
+  }
+}
+
 .wpcf7 {
   &-form-control:is(input[type=text], input[type=email], input[type=tel], select, input[type=date], textarea) {
     font-size: var(--fs-normal);

@@ -1,14 +1,15 @@
 .header {
+  --_header-bg-clr: oklch( from var(--color-background-main) l c h / var(--_header-bg-opacity, 1) );
   &.header {
     container: header / inline-size;
   }
 
   &-top {
-    background-color: var(--color-background-main);
+    background-color: var(--_header-bg-clr);
   }
 
   &-bg-color {
-    background-color: var(--color-background-main);
+    background-color: var(--_header-bg-clr);
   }
 
   li.custom:has(.header__title) {
@@ -30,6 +31,8 @@
   }
 
   &:has( .stuck ) {
+    --_header-bg-opacity: .65;
+
     .header__title {
       translate: 0 -2rem;
       opacity: 0;

@@ -15,8 +15,96 @@
     }
   }
 
+  &__title {
+    font-size: var(--fs-normal);
+    margin-block-end: var(--spacing-lg);
+  }
+
+  &__description {
+    margin-block-end: .625em;
+  }
+
+  &__menu {
+    &-item {
+      margin-block: 0;
+
+      & + & {
+        margin-block-start: .5rem;
+      }
+    }
+  }
+
+  &-main {
+    border-top: .0625rem solid oklch( 1 0 0 / .2 );
+    padding-block: var(--spacing-6xl) var(--spacing-xl);
+
+    .section__inner {
+      display: grid;
+      grid-template-columns: repeat(var(--_cols, 1), minmax( 0, 1fr ) );
+      gap: var(--spacing-lg) var(--spacing-xl);
+    }
+
+    &__about {
+      &-content {
+        margin-block-end: var(--spacing-md);
+      }
+    }
+  }
+
+  .wpcf7 {
+    &-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+
+    &-form-control {
+      margin-block: 0;
+    }
+
+    .jins-button {
+      aspect-ratio: 1 / 1;
+      height: 100%;
+      width: auto;
+    }
+
+    &-response-output {
+      grid-column: 1/-1;
+    }
+
+    &-not-valid-tip {
+      position: absolute;
+      margin: 0;
+      top: 100%;
+      left: 50%;
+      translate: -50% .3125rem;
+      white-space: nowrap;
+    }
+  }
+
+  .jins-socials {
+    --_icon-size: 1.125rem;
+
+    &__item a {
+      display: block;
+      background-color: var(--color-background-muted);
+      width: 1.875rem;
+      aspect-ratio: 1;
+      border-radius: .125rem;
+      display: grid;
+      place-items: center;
+
+      transition: background-color var(--transition-duration);
+
+      &:hover {
+        background-color: oklch( from var(--color-background-muted) calc(l + .1) c h / 1 );
+      }
+    }
+  }
+
   &__bottom {
     padding-block :var(--spacing-sm);
+    font-size: var(--fs-sm);
+    text-align: center;
   }
 
   .back-to-top.active {
@@ -26,6 +114,18 @@
     &:is( :hover, :active ) {
       background-color: var(--primary-color-500);
       color: var(--wp--preset--color--white);
+    }
+  }
+
+  @include container-query( footer, sm, gt ) {
+    &-main {
+      --_cols: 2;
+    }
+  }
+
+  @include container-query( footer, md, gt ) {
+    &-main {
+      --_cols: 4;
     }
   }
 }

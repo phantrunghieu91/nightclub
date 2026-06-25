@@ -9,6 +9,8 @@
 
 <footer id="footer" class="footer">
 
+	<?php get_template_part( 'gpw-templates/footer/main-section' ) ?>
+
 	<?php get_template_part( 'gpw-templates/footer/bottom-section' ) ?>
 
 	<?php

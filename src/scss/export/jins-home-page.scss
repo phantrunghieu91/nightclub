@@ -11,7 +11,7 @@
 /* =       Customer reviews        = */
 /* ================================= */
 .customer-reviews {
-  padding-block: var(--spacing-6xl);
+  padding-block: var(--spacing-6xl) 0;
 
   &__grid {
     align-items: start;
@@ -59,5 +59,44 @@
 
   &:hover {
     border-color: var(--color-text-base);
+  }
+}
+/* ================================= */
+/* =           Services            = */
+/* ================================= */
+.services {
+  padding-block: var(--spacing-6xl);
+
+  &__grid {
+    --_grid-gap: 3.75rem;
+  }
+
+  .service {
+    display: grid;
+    grid-template-columns: var(--_icon-size, 6.25rem) 1fr;
+    align-content: start;
+    gap: 0 1rem;
+
+    &__icon {
+      grid-row: 1 / 3;
+    }
+
+    &__label {
+      font-family: 'Be Vietnam Pro';
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+
+  @include container-query( content, sm, gt ) {
+    &__grid {
+      --_grid-cols: 2;
+    }
+  }
+
+  @include container-query( content, sm, gt ) {
+    &__grid {
+      --_grid-cols: 3;
+    }
   }
 }

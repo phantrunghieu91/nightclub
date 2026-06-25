@@ -65,6 +65,11 @@ class Register extends BaseController {
       $this->enqueueScript( 'swiper', '12.2.0' );
       $this->enqueueStyle( 'swiper', '12.2.0' );
     }
+
+    if( is_front_page() ) {
+      // $this->enqueueScript( 'gpw-home-page', time() );
+      $this->enqueueStyle( 'jins-home-page', time() );
+    }
   }
   public function setTypeForModuleScripts() {
     if( empty( $this->module_scripts ) ) {

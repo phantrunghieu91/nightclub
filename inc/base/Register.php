@@ -70,6 +70,10 @@ class Register extends BaseController {
       // $this->enqueueScript( 'gpw-home-page', time() );
       $this->enqueueStyle( 'jins-home-page', time() );
     }
+
+    if( is_page( [51] )) {
+      $this->enqueueStyle( 'jins-contact-page', time() );
+    }
   }
   public function setTypeForModuleScripts() {
     if( empty( $this->module_scripts ) ) {

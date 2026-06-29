@@ -1,0 +1,100 @@
+/* ================================= */
+/* =             Hero              = */
+/* ================================= */
+.hero {
+  padding-block: 11.25rem 3.125rem;
+
+  &--with-content {
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .hero__content {
+      text-align: center;
+    }
+  
+    .hero__title {
+      color: var(--primary-color-500);
+      text-transform: uppercase;
+      font-size: var(--fs-xl);
+    }
+  
+    .hero__description {
+      font-weight: 700;
+    }
+  }
+}
+/* ================================= */
+/* =         Contact info          = */
+/* ================================= */
+.contact-info {
+  padding-block: var(--spacing-3xl);
+
+  .section__inner {
+    --_section-inner-max-width: 62.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-xl) var(--spacing-2xl);
+  }
+
+  &__item {
+    margin-block-end: .5rem;
+
+    &.company-name {
+      text-transform: uppercase;
+    }
+
+    &:has( + .contact-info__map ) {
+      margin-block-end: var(--spacing-lg);
+    }
+  }
+
+  &__map {
+    iframe {
+      width: 100%;
+      aspect-ratio: 4/3;
+    }
+  }
+
+  .wpcf7 {
+    &-form {
+      &__group {
+        display: flex;
+        align-items: center;
+        gap: .3125rem;
+        margin-block-end: var(--spacing-md);
+      }
+    }
+
+    &-form-control:is(input, select, textarea) {
+      margin-block-end: 0;
+      background-color: transparent;
+      border: none;
+      border-bottom: .0625rem solid oklch( 1 0 0 / var(--_form-control-opacity, .5) );
+      color: var(--wp--preset--color--white);
+
+      transition: border-color var(--transition-duration);
+
+      &:is(:hover, :focus-visible) {
+        --_form-control-opacity: 1;
+      }
+    }
+
+    &-submit {
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gray-color-950);
+    }
+  }
+
+  @include container-query( content, sm, gt ) {
+    .section__inner {
+      grid-template-columns: minmax(0, 1fr) 40%;
+    }
+
+    &__map {
+      iframe {
+        aspect-ratio: 9/5;
+      }
+    }
+  }
+}

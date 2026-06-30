@@ -38,6 +38,9 @@
     @each $i, $size in $font-sizes {
       --fs-#{$i}: #{$size};
     }
+    // Font family
+    --ff-base: "Be Vietnam Pro", sans-serif;
+    --ff-heading: Anton, sans-serif;
     // shadow
     @each $i, $shadow in $shadows {
       --shadow-#{$i}: #{$shadow};

@@ -4,6 +4,7 @@
 node_modules
 not-upload
 .php-cs-fixer.dist.php
+.php-cs-fixer.cache
 
 /assets/css/*
 /assets/js/*

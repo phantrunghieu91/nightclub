@@ -3,22 +3,20 @@
     $class: &;
 
     --_card-thumbnail-width: 100%;
-    --_card-content-padding-block: var(--spacing-md);
-    --_card-content-padding-inline: var(--spacing-md);
+    --_card-thumbnail-aspect-ratio: 9/7;
+    --_card-content-padding-block: 0;
+    --_card-content-padding-inline: 0;
 
     overflow: hidden;
     border-radius: var(--_card-border-radius, 0rem);
 
     &--horizontal {
       --_card-thumbnail-width: minmax(6.25rem, 25%);
+      --_card-thumbnail-aspect-ratio: 11 / 10;
       display: grid;
       grid-template-columns: var(--_card-thumbnail-width) minmax(0, 1fr);
       align-items: center;
       gap: 0 var(--spacing-md);
-
-      #{$class}__thumbnail {
-        aspect-ratio: 11 / 10;
-      }
 
       &:has( + & ) {
         margin-block-end: var(--_spacing-between-card, var(--spacing-md));
@@ -32,11 +30,10 @@
     }
 
     &--padded {
-      box-shadow: var(--_card-shadow, var(--shadow-sm));
+      --_card-content-padding-block: var(--spacing-md);
+      --_card-content-padding-inline: var(--spacing-md);
 
-      #{$class}__content {
-        padding: var(--_card-content-padding-block) var(--_card-content-padding-inline);
-      }
+      box-shadow: var(--_card-shadow, var(--shadow-sm));
     }
 
     &--content-overlay {
@@ -77,10 +74,14 @@
       }
     }
 
+    &__content {
+      padding: var(--_card-content-padding-block) var(--_card-content-padding-inline);
+    }
+
     &__thumbnail {
       display: block;
       width: 100%;
-      aspect-ratio: 9/7;
+      aspect-ratio: var(--_card-thumbnail-aspect-ratio);
 
       img {
         display: block;

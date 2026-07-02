@@ -3,7 +3,7 @@
  * @author Hieu "Jin" Phan Trung
  * * Template: Single post - header
  */
-const HEADER_BG_IMG_ID = 147;
+const HEADER_BG_IMG_ID = get_field('cat_header_bg_img_id', 'gpw_settings') ?: 147;
 $primaryCategoryID     = get_post_meta( get_the_ID(), 'rank_math_primary_category', true );
 $category              = null;
 if( $primaryCategoryID ) {

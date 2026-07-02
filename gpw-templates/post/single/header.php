@@ -3,7 +3,7 @@
  * @author Hieu "Jin" Phan Trung
  * * Template: Single post - header
  */
-const HEADER_BG_IMG_ID = get_field('cat_header_bg_img_id', 'gpw_settings') ?: 147;
+$headerBgID = get_field('cat_header_bg_img_id', 'gpw_settings') ?: 147;
 $primaryCategoryID     = get_post_meta( get_the_ID(), 'rank_math_primary_category', true );
 $category              = null;
 if( $primaryCategoryID ) {
@@ -14,7 +14,7 @@ if( $primaryCategoryID ) {
 }
 ?>
 <header class="post-header hero hero--with-content" 
-  style="background: var(--primary-color-500) url(<?= wp_get_attachment_image_url( HEADER_BG_IMG_ID, 'full' ) ?>) center / cover no-repeat;">
+  style="background: var(--primary-color-500) url(<?= wp_get_attachment_image_url( $headerBgID, 'full' ) ?>) center / cover no-repeat;">
   <div class="section__inner">
     <div class="hero__content">
       <strong class="hero__title">

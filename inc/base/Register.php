@@ -82,6 +82,10 @@ class Register extends BaseController {
     if( is_single() ) {
       $this->enqueueStyle( 'jins-single-post-page', time() );
     }
+
+    if( is_post_type_archive( 'clubs' ) ) {
+      $this->enqueueStyle( 'jins-archive-clubs-page', time() );
+    }
   }
   public function setTypeForModuleScripts() {
     if( empty( $this->module_scripts ) ) {

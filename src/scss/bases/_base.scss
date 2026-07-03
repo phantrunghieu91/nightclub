@@ -26,6 +26,9 @@
     --color-heading-base: var(--color-text-base);
     --color-heading-accent: var(--primary-color-500);
 
+    --color-on-primary: oklch( 0 0 0 / 1);
+    --color-on-secondary: var(--wp--preset--color--white);
+
     // Screen size
     @each $i, $screen in $breakpoints {
       --screen-#{$i}: #{$screen};

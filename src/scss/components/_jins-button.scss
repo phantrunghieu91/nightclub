@@ -98,23 +98,23 @@
     &[data-theme=primary] {
       --_accent-color: var(--primary-color-500);
       --_accent-color-hover: var(--primary-color-400);
-      --_text-color: var(--wp--preset--color--white);
+      --_text-color: var(--color-on-primary);
       --_background-color: var(--primary-color-500);
       --_border-color: var(--primary-color-500);
       --_hover-background-color: var(--primary-color-400);
       --_hover-border-color: var(--primary-color-400);
-      --_hover-text-color: var(--wp--preset--color--white);
+      --_hover-text-color: var(--color-on-primary);
     }
 
     &[data-theme=secondary] {
       --_accent-color: var(--secondary-color-500);
       --_accent-color-hover: var(--secondary-color-400);
-      --_text-color: var(--wp--preset--color--white);
+      --_text-color: var(--color-on-secondary);
       --_background-color: var(--secondary-color-500);
       --_border-color: var(--secondary-color-500);
       --_hover-background-color: var(--secondary-color-400);
       --_hover-border-color: var(--secondary-color-400);
-      --_hover-text-color: var(--wp--preset--color--white);
+      --_hover-text-color: var(--color-on-secondary);
     }
 
     &[data-theme=tertiary] {

@@ -42,8 +42,8 @@ class Register extends BaseController {
    */
   protected function setShortcodes() {
     $this->shortcodes = [
-      new \gpweb\shortcodes\JinsSocials('jins_socials'),
-      new \gpweb\shortcodes\PhoneNumbers('phone_numbers'),
+      new \gpweb\shortcodes\JinsSocials( 'jins_socials' ),
+      new \gpweb\shortcodes\PhoneNumbers( 'phone_numbers' ),
     ];
   }
   
@@ -71,8 +71,20 @@ class Register extends BaseController {
       $this->enqueueStyle( 'jins-home-page', time() );
     }
 
-    if( is_page( [51] )) {
+    if( is_page( [51] ) ) {
       $this->enqueueStyle( 'jins-contact-page', time() );
+    }
+
+    if( is_home() || is_category() ) {
+      $this->enqueueStyle( 'jins-category-post-page', time() );
+    }
+
+    if( is_single() ) {
+      $this->enqueueStyle( 'jins-single-post-page', time() );
+    }
+
+    if( is_post_type_archive( 'clubs' ) ) {
+      $this->enqueueStyle( 'jins-archive-clubs-page', time() );
     }
   }
   public function setTypeForModuleScripts() {

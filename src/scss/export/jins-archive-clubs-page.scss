@@ -1,0 +1,83 @@
+@use '../components/hero-section';
+@use '../components/jins-pagination';
+/* ================================= */
+/* =              Header           = */
+/* ================================= */
+.clubs-header {
+  &__description {
+    display: grid;
+    grid-template-rows: 0fr min-content;
+    
+    transition: grid-template-rows 500ms;
+
+    &:has([aria-expanded=true]) {
+      grid-template-rows: 1fr min-content;
+    }
+
+    &-content {
+      min-height: calc( var(--fs-normal) * 4 * 1.5 );
+      overflow: hidden;
+    }
+
+    &-toggle {
+      margin-block-start: var(--spacing-md);
+
+      &[aria-expanded=false]:before {
+        content: attr(data-collapsed-text);
+      }
+
+      &[aria-expanded=true]:before {
+        content: attr(data-expanded-text);
+      }
+    }
+  }
+}
+/* ================================= */
+/* =           Clubs list          = */
+/* ================================= */
+.clubs {
+  padding-block: var(--spacing-3xl);
+
+  .jins-card {
+    --_card-thumbnail-width: minmax(0, 1fr);
+    --_card-thumbnail-aspect-ratio: 3/2;
+    --_space-between-card: 2rem;
+
+    gap: 0;
+
+    &__title a {
+      color: var(--primary-color-500);
+
+      &:hover {
+        color: var(--secondary-color-500);
+      }
+    }
+  }
+
+  @include container-query( content, md ) {
+    .jins-card {
+      --_card-content-padding-inline: 0;
+
+      grid-template-columns: var(--_card-thumbnail-width);
+    }
+  }
+
+  @include container-query( content, md , gt ) {
+    .jins-card {
+      --_card-content-padding-inline: 3.125rem;
+      --_space-between-card: 0;
+
+      &:nth-child(even) {
+        & > * {
+          grid-row: 1 / 2;
+        }
+        .jins-card__thumbnail {
+          grid-column: 2 / 3;
+        }
+        .jins-card__content {
+          grid-column: 1 / 2;
+        }
+      }
+    }
+  }
+}

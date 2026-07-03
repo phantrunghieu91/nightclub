@@ -1,0 +1,26 @@
+@layer components {
+  .pagination {
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .page-numbers {
+      width: 3.125rem;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: .0625rem solid currentColor;
+
+      &.current {
+        background-color: var(--secondary-color-500);
+        border-color: var(--secondary-color-500);
+      }
+
+      &:not( .current ):hover {
+        color: var(--secondary-color-500);
+      }
+    }
+  }
+}

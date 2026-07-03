@@ -1,28 +1,4 @@
-/* ================================= */
-/* =             Hero              = */
-/* ================================= */
-.hero {
-  padding-block: 11.25rem 3.125rem;
-
-  &--with-content {
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    .hero__content {
-      text-align: center;
-    }
-  
-    .hero__title {
-      color: var(--primary-color-500);
-      text-transform: uppercase;
-      font-size: var(--fs-xl);
-    }
-  
-    .hero__description {
-      font-weight: 700;
-    }
-  }
-}
+@use '../components/hero-section';
 /* ================================= */
 /* =         Contact info          = */
 /* ================================= */

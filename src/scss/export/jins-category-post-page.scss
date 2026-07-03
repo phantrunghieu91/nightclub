@@ -1,0 +1,99 @@
+@use '../components/hero-section';
+@use '../components/jins-pagination';
+/* ================================= */
+/* =              Header           = */
+/* ================================= */
+.post-header {
+  &__description {
+    display: grid;
+    grid-template-rows: 0fr min-content;
+    
+    transition: grid-template-rows 500ms;
+
+    &:has([aria-expanded=true]) {
+      grid-template-rows: 1fr min-content;
+    }
+
+    &-content {
+      min-height: calc( var(--fs-normal) * 4 * 1.5 );
+      overflow: hidden;
+    }
+
+    &-toggle {
+      margin-block-start: var(--spacing-md);
+
+      &[aria-expanded=false]:before {
+        content: attr(data-collapsed-text);
+      }
+
+      &[aria-expanded=true]:before {
+        content: attr(data-expanded-text);
+      }
+    }
+  }
+}
+/* ================================= */
+/* =               Body            = */
+/* ================================= */
+.post-content {
+  padding-block: var(--spacing-3xl);
+
+  .section__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-3xl);
+  }
+
+  .jins-card__excerpt {
+    --_line-clamp: 3;
+  }
+
+  .pagination {
+    grid-column: 1/-1;
+  }
+
+  @include container-query-between( content, sm, md ) {
+    &__body {
+      --_grid-cols: 2;
+    }
+  }
+
+  @include container-query(content, sm, gt ) {
+    &__body {
+      --_fixed-height: true;
+    }
+  }
+
+  @include container-query( content, md ) {
+    &__sidebar {
+      display: none;
+    }
+  }
+
+  @include container-query(content, md, gt ) {
+    .section__inner {
+      grid-template-columns: 18.75rem minmax(0, 1fr);
+    }
+
+    &__body {
+      --_grid-cols: 3;
+    }
+  }
+}
+/* ================================= */
+/* =             Sidebar           = */
+/* ================================= */
+.jins-sidebars {
+  position: relative;
+
+  &__inner {
+    position: sticky;
+    top: calc(var(--flatsome-scroll-padding-top) + 1rem);
+  }
+}
+.jins-sidebar {
+  .jins-card__title {
+    font-size: var(--fs-normal);
+    font-family: var(--ff-base);
+  }
+}

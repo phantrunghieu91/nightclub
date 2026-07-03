@@ -1,0 +1,60 @@
+@use '../components/hero-section';
+/* ================================= */
+/* =              Header           = */
+/* ================================= */
+.hero {
+  &__title {
+    font-family: var(--ff-heading);
+    color: var(--primary-color-500);
+  }
+}
+/* ================================= */
+/* =             Content           = */
+/* ================================= */
+.post-content {
+  padding-block: var(--spacing-3xl);
+
+  p + figure {
+    margin-block-start: var(--spacing-md);
+  }
+
+  figure {
+    display: block;
+
+    &.aligncenter {
+      margin-inline: auto;
+    }
+  }
+}
+/* ================================= */
+/* =         Related Posts         = */
+/* ================================= */
+.related-posts {
+  padding-block: var(--spacing-3xl);
+  border-top: 0.0625rem solid oklch( 1 0 0 / .2);
+
+  .section__title {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  &__item {
+    margin-bottom: var(--spacing-xs);
+
+    &:before {
+      margin-inline-end: .25rem;
+      font-family: "Font Awesome 7 Free";
+      font-weight: 900;
+      font-size: .625rem;
+      content: '\f054';
+      color: currentColor;
+    }
+
+    a {
+      color: var(--secondary-color-500);
+
+      &:hover {
+        color: var(--primary-color-500);
+      }
+    }
+  }
+}

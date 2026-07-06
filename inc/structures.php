@@ -6,8 +6,12 @@
 if( !function_exists( 'jins_comment_cb' )) {
   function jins_comment_cb( $comment, $args, $depth ) {
     $GLOBALS['comment'] = $comment;
-    $avatar_size = 100;
+    $avatar_size = 80;
     $comment_link = get_comment_link( $comment->comment_ID );
+    $classes = ['jins-comments__item'];
+    if( $comment->get_children() ) {
+      $classes[] = 'jins-comments__item--has-children';
+    }
     switch ( $comment->comment_type ):
       case 'pingback':
       case 'trackback': ?>
@@ -16,11 +20,11 @@ if( !function_exists( 'jins_comment_cb' )) {
         </li>
         <?php break; // break pingback, trackback
       default: ?>
-        <li <?php comment_class('jins-comments__item') ?> id="li-comment-<?php comment_ID() ?>">
+        <li <?php comment_class( $classes ) ?> id="li-comment-<?php comment_ID() ?>">
           <article class="jins-comment" id="comment-<?php comment_ID() ?>">
-            <?= get_avatar( $comment, $avatar_size, '', get_comment_author() . '\'s comment', [ 'class' => 'jins-comment__customer-avatar' ] ) ?>
-            <div class="jins-comment__label">
-              <?php printf( __( '%s <span class="says">says:</span>', 'flatsome' ), sprintf( '<cite><strong>%s</strong></cite>', get_comment_author_link() ) ); ?>
+            <?= get_avatar( $comment, $avatar_size, '', get_comment_author() . '\'s avatar', [ 'class' => 'jins-comment__avatar' ] ) ?>
+            <div class="jins-comment__author">
+              <?php printf( __( '%s <span class="jins-comment__author-says">says:</span>', 'flatsome' ), sprintf( '<cite><strong>%s</strong></cite>', get_comment_author_link() ) ); ?>
             </div>
             <div class="jins-comment__content"><?php comment_text() ?></div>
             <div class="jins-comment__meta">
@@ -38,7 +42,6 @@ if( !function_exists( 'jins_comment_cb' )) {
               ] ); ?>
             </div>
           </article>
-        </li>
         <?php break;
     endswitch;
   }

@@ -21,10 +21,8 @@ if ( post_password_required() ) {
         <h2 class="section__title"><?= _x( 'Comments & Reviews', 'Comments template', 'gpw' ) ?></h2>
         <ol class="jins-comments__list">
           <?php wp_list_comments( [
-            // 'callback'    => 'flatsome_comment',
-            'callback' => 'jins_comment_cb',
-            'avatar_size' => '50',
-            'format'      => 'html5'
+            'callback'     => 'jins_comment_cb',
+            'format'       => 'html5'
           ] ); ?>
         </ol>
 

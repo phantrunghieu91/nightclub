@@ -41,4 +41,30 @@ document.addEventListener( 'DOMContentLoaded', () => {
     }
   };
   imageCarouselController.init();
+
+  const otherClubsCarouselController = {
+    init() {
+      const swiperEl = document.querySelector('.other-clubs .swiper');
+      if( !swiperEl || typeof Swiper === 'undefined' ) {
+        return;
+      }
+      this.swiper = new Swiper( swiperEl, {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+          prevEl: swiperEl.querySelector('.jins-swiper-nav-btn__prev'),
+          nextEl: swiperEl.querySelector('.jins-swiper-nav-btn__next'),
+        },
+        breakpoints: {
+          550: {
+            slidesPerView: 2,
+          },
+          850: {
+            slidesPerView: 3,
+          }
+        } 
+      });
+    }
+  };
+  otherClubsCarouselController.init();
 } );

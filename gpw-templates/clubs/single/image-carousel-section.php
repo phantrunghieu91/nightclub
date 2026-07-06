@@ -20,7 +20,7 @@ foreach( $imageIds as $imageID ) {
   );
 }
 ?>
-<section class="image-carousel">
+<section class="image-carousel<?= esc_attr( $fancySlug ? " $fancySlug" : '') ?>">
   <div class="section__inner">
     <?php if( !empty( $title ) ) : ?>
       <h2 class="section__title"><?= esc_html( $title ) ?></h2>

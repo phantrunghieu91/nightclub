@@ -25,4 +25,8 @@ get_template_part( 'gpw-templates/clubs/single/image-carousel-section', null, [ 
 
 get_template_part( 'gpw-templates/clubs/single/other-information' );
 
+get_template_part( 'gpw-templates/clubs/single/other-clubs-section' );
+
+get_template_part( 'gpw-templates/clubs/single/review-form-section' );
+
 get_template_part( 'gpw-templates/global/footer' );

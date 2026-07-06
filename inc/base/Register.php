@@ -96,7 +96,7 @@ class Register extends BaseController {
     }
       
     if( is_singular( 'clubs' ) ) {  
-      $this->enqueueStyle( 'jins-single-clubs-page', time() );
+      $this->enqueueStyle( 'jins-single-club-page', time() );
     }
   }
   public function setTypeForModuleScripts() {

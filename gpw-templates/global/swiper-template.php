@@ -20,15 +20,15 @@ if( !isset($slideItems) || empty($slideItems)) {
     <?php endforeach; ?>
   </div>
   <?php if($hasNav) : ?>
-    <a class="gpw-nav-btn gpw-nav-btn__prev" role="button" aria-label="Previous slide">
+    <a class="jins-swiper-nav-btn jins-swiper-nav-btn__prev" role="button" aria-label="Previous slide">
       <span class="material-symbols-outlined">chevron_left</span>
     </a>
-    <a class="gpw-nav-btn gpw-nav-btn__next" role="button" aria-label="Next slide">
+    <a class="jins-swiper-nav-btn jins-swiper-nav-btn__next" role="button" aria-label="Next slide">
       <span class="material-symbols-outlined">chevron_right</span>
     </a>
   <?php endif; ?>
   <?php if($hasPagination) : ?>
-    <div class="gpw-pagination"></div>
+    <div class="jins-swiper-pagination"></div>
   <?php endif; ?>
   <?php if($hasScrollbar) : ?>
     <div class="swiper-scrollbar"></div>

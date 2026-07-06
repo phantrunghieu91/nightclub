@@ -25,3 +25,4 @@ if( class_exists( 'gpweb\\inc\\ThemeInit' ) ) {
 
 // Import custom helper functions
 require_once __DIR__ . '/inc/helper_functions.php';
+require_once __DIR__ . '/inc/structures.php';

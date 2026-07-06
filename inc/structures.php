@@ -31,12 +31,11 @@ if( !function_exists( 'jins_comment_cb' )) {
               </a>
             </div>
             <div class="jins-comment__reply-wrapper">
-              <?php comment_reply_link(
-                array_merge( $args, [
+              <?php comment_reply_link( [
+                  ...$args,
                   'depth'     => $depth,
                   'max_depth' => $args['max_depth'],
-                ] )
-              ); ?>
+                ] ); ?>
             </div>
           </article>
         </li>

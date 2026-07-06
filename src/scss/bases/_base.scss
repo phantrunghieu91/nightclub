@@ -86,6 +86,10 @@
     }
   }
 
+  label {
+    color: var(--color-text-base);
+  }
+
   #content {
     container: content / inline-size;
     background-color: var(--color-background-main);

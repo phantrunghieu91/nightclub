@@ -39,10 +39,10 @@ class Register extends BaseController {
   }
   public function enqueueSwiperLibrary( $slug, $name, $args ) {
     if( ! wp_script_is( 'swiper', 'enqueued' ) ) {
-      $this->enqueueScript( 'swiper' );
+      $this->enqueueScript( 'swiper', '14.0.1' );
     }
     if( ! wp_style_is( 'swiper', 'enqueued' ) ) {
-      $this->enqueueStyle( 'swiper' );
+      $this->enqueueStyle( 'swiper', '14.0.1' );
     }
   }
   /**
@@ -96,6 +96,7 @@ class Register extends BaseController {
     }
       
     if( is_singular( 'clubs' ) ) {  
+      $this->enqueueScript( 'jins-single-club-page', time() );
       $this->enqueueStyle( 'jins-single-club-page', time() );
     }
   }

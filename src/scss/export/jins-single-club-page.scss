@@ -1,6 +1,5 @@
 @use '../components/jins-swiper';
 @use '../components/hero-section';
-@use '../components/customer-reviews';
 /* ================================= */
 /* =             Global            = */
 /* ================================= */
@@ -91,6 +90,32 @@ section:not(.hero) {
   }
 }
 /* ================================= */
+/* =        Image carousel         = */
+/* ================================= */
+.image-carousel {
+  --_slides-per-view: 1;
+  --_space-between: .625rem;
+  
+  .swiper-slide {
+    width: calc( ( 100% - var(--_space-between) * ( var(--_slides-per-view) - 1 ) ) / var(--_slides-per-view));
+    margin-inline-end: var(--_space-between);
+  }
+
+  @include container-query( content, sm, gt ) {
+    --_slides-per-view: 2;
+    --_space-between: 1.25rem;
+  }
+
+  @include container-query( content, md, gt ) {
+    --_slides-per-view: 3;
+    --_space-between: 1.25rem;
+
+    &.menu {
+      --_slides-per-view: 4;
+    }
+  }
+}
+/* ================================= */
 /* =      Booking information      = */
 /* ================================= */
 .booking-information {
@@ -121,9 +146,31 @@ section:not(.hero) {
   }
 }
 /* ================================= */
-/* =        Customer Reviews       = */
+/* =          Other clubs          = */
 /* ================================= */
-.customer-reviews {
+.other-clubs {
+  --_slides-per-view: 1;
+  --_space-between: .625rem;
+  
+  .swiper-slide {
+    width: calc( ( 100% - var(--_space-between) * ( var(--_slides-per-view) - 1 ) ) / var(--_slides-per-view));
+    margin-inline-end: var(--_space-between);
+  }
+
+  @include container-query( content, sm, gt ) {
+    --_slides-per-view: 2;
+    --_space-between: 1.25rem;
+  }
+
+  @include container-query( content, md, gt ) {
+    --_slides-per-view: 3;
+    --_space-between: 1.25rem;
+  }
+}
+/* ================================= */
+/* =          Other clubs          = */
+/* ================================= */
+.jins-comments {
   &:is(section) {
     padding-block-end: var(--spacing-3xl);
   }

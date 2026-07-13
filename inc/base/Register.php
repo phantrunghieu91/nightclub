@@ -92,10 +92,22 @@ class Register extends BaseController {
     }
 
     if( is_post_type_archive( 'clubs' ) ) {
+      $this->enqueueScript( 'jins-archive-clubs-page', time(), false, '', ['wp-api-request'] );
       $this->enqueueStyle( 'jins-archive-clubs-page', time() );
+
+      wp_localize_script( 'jins-archive-clubs-page', 'jins_settings', [
+        'per_page' => get_option( 'posts_per_page' ),
+        'messages' => [
+          'FILTERING_TEXT'        => __( 'Filtering...', 'gpw' ),
+          'QUERY_ERROR'           => __( 'Please wait for 10s and try again!', 'gpw' ),
+          'NO_CLUBS_FOUND'        => __( 'There are no clubs found!', 'gpw' ),
+          'NO_FILTER_SELECTED'    => __( 'Please select at least 1 filter!', 'gpw' ),
+          'PLACEHOLDER_IMAGE_URL' => wp_get_attachment_image_url( PLACEHOLDER_IMAGE_ID, 'medium_large' ),
+        ],
+      ] );
     }
       
-    if( is_singular( 'clubs' ) ) {  
+    if( is_singular( 'clubs' ) ) {
       $this->enqueueScript( 'jins-single-club-page', time() );
       $this->enqueueStyle( 'jins-single-club-page', time() );
     }

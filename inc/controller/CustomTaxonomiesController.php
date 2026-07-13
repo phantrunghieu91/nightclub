@@ -24,6 +24,7 @@ class CustomTaxonomiesController {
         'description'  => __( 'Type of music is using in the club.', 'gpw' ),
         'rewrite'      => [ 'en' => 'music', 'vi' => 'nhac' ],
         'hierarchical' => true,
+        'show_in_rest' => true,
       ],
       [
         'slug'         => 'clubs-type',
@@ -31,6 +32,7 @@ class CustomTaxonomiesController {
         'description'  => __( 'Type of clubs.', 'gpw' ),
         'rewrite'      => [ 'en' => 'clubs-type', 'vi' => 'loai-clubs' ],
         'hierarchical' => true,
+        'show_in_rest' => true,
       ],
     ];
   }

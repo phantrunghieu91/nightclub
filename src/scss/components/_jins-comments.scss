@@ -1,0 +1,97 @@
+@use '../abstracts/' as *;
+@layer components {
+  .jins-comments {
+    --_space-between-comment: 1rem;
+    --_space-from-edge-for-children: 2rem;
+    --_line-stroke-width: .125rem;
+    --_depth: 0;
+
+    &__list-wrapper {
+      margin-block-end: var(--spacing-xl);
+    }
+
+    &__item {
+      margin-block-end: 0;
+
+      & + & {
+        margin-block-start: var(--_space-between-comment);
+      }
+    }
+
+    @supports (anchor-scope: --reply) {
+      .jins-comments__item--has-children.depth-1 > .jins-comment {
+        anchor-name: --comment;
+      }
+
+      @for $i from 1 through 5 {
+        .jins-comments__item.depth-#{$i} {
+          --_depth: #{$i};
+        }
+      }
+
+      .children .jins-comments__item > .jins-comment {
+        --_line-width: calc(var(--_space-from-edge-for-children) / 2 + var(--_space-from-edge-for-children) * (var(--_depth) - 2));
+        --_rounded-corner-size: calc( 1rem * ( var(--_depth) - 1 ) );
+        anchor-name: --reply;
+        anchor-scope: --reply;
+
+        &:before {
+          content: '';
+          pointer-events: none;
+          width: var(--_line-width);
+          position: absolute;
+          top: anchor(bottom --comment);
+          bottom: anchor(center --reply);
+          left: calc(anchor(left --comment) + var(--_space-from-edge-for-children) / 2);
+          border-style: solid;
+          border-color: var(--primary-color-500);
+          border-width: 0 0 var(--_line-stroke-width) var(--_line-stroke-width);
+          border-bottom-left-radius: var(--_rounded-corner-size);
+        }
+      }
+
+      .depth-2 .children .jins-comment__item--has-children > .jins-comment {
+        --_anchor-comment-lvl: --comment-lvl-2;
+      }
+    }
+
+    .children {
+      margin-block-start: 1.25rem;
+      margin-inline-start: var(--_space-from-edge-for-children);
+    }
+  }
+
+  .jins-comment {
+    background-color: var(--color-background-muted);
+    padding: 1.25rem;
+    border-radius: .5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'avatar author' 'avatar content' 'avatar meta';
+    align-items: start;
+    gap: .3125rem 1rem;
+
+    &__avatar {
+      grid-area: avatar;
+      border-radius: 50%;
+    }
+
+    &__author {
+      grid-area: author;
+    }
+
+    &__content {
+      grid-area: content;
+      font-size: var(--fs-sm);
+    }
+
+    &__meta, &__reply-wrapper {
+      grid-area: meta;
+      font-size: var(--fs-xs);
+    }
+
+    &__reply-wrapper {
+      justify-self: end;
+    }
+  }
+}

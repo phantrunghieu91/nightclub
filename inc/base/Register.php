@@ -19,6 +19,7 @@ class Register extends BaseController {
   public function register() {
     add_action( 'wp_head', [ $this, 'registerCSSLayers' ], 5 );
     add_action( 'wp_enqueue_scripts', [$this, 'overrideWPGlobalStyle'], 20 );
+    add_action( 'get_template_part_gpw-templates/global/swiper-template', [$this, 'enqueueSwiperLibrary'], 10, 3 );
     add_action( 'wp_enqueue_scripts', [$this, 'enqueue'], 110 );
     add_action( 'wp_enqueue_scripts', [$this, 'setTypeForModuleScripts'], 120 );
     // Add AOS init script in the header
@@ -36,7 +37,14 @@ class Register extends BaseController {
   public function registerCSSLayers() : void {
     echo '<style id="jins-layers-level">@layer flatsome, wp-global, reset, base, utilities, components;</style>';
   }
-
+  public function enqueueSwiperLibrary( $slug, $name, $args ) {
+    if( ! wp_script_is( 'swiper', 'enqueued' ) ) {
+      $this->enqueueScript( 'swiper', '14.0.1' );
+    }
+    if( ! wp_style_is( 'swiper', 'enqueued' ) ) {
+      $this->enqueueStyle( 'swiper', '14.0.1' );
+    }
+  }
   /**
    * Sets the shortcodes.
    */
@@ -61,9 +69,9 @@ class Register extends BaseController {
     $this->enqueueStyle( 'jins-footer', time() );
 
     // * Enqueue swiper for page that needs it
-    if( is_front_page() ) {
-      $this->enqueueScript( 'swiper', '12.2.0' );
-      $this->enqueueStyle( 'swiper', '12.2.0' );
+    if( is_singular( 'clubs' ) ) {
+      $this->enqueueScript( 'fancybox', null );
+      $this->enqueueStyle( 'fancybox', null );
     }
 
     if( is_front_page() ) {
@@ -79,12 +87,29 @@ class Register extends BaseController {
       $this->enqueueStyle( 'jins-category-post-page', time() );
     }
 
-    if( is_single() ) {
+    if( is_singular( 'post' ) ) {
       $this->enqueueStyle( 'jins-single-post-page', time() );
     }
 
     if( is_post_type_archive( 'clubs' ) ) {
+      $this->enqueueScript( 'jins-archive-clubs-page', time(), false, '', ['wp-api-request'] );
       $this->enqueueStyle( 'jins-archive-clubs-page', time() );
+
+      wp_localize_script( 'jins-archive-clubs-page', 'jins_settings', [
+        'per_page' => get_option( 'posts_per_page' ),
+        'messages' => [
+          'FILTERING_TEXT'        => __( 'Filtering...', 'gpw' ),
+          'QUERY_ERROR'           => __( 'Please wait for 10s and try again!', 'gpw' ),
+          'NO_CLUBS_FOUND'        => __( 'There are no clubs found!', 'gpw' ),
+          'NO_FILTER_SELECTED'    => __( 'Please select at least 1 filter!', 'gpw' ),
+          'PLACEHOLDER_IMAGE_URL' => wp_get_attachment_image_url( PLACEHOLDER_IMAGE_ID, 'medium_large' ),
+        ],
+      ] );
+    }
+      
+    if( is_singular( 'clubs' ) ) {
+      $this->enqueueScript( 'jins-single-club-page', time() );
+      $this->enqueueStyle( 'jins-single-club-page', time() );
     }
   }
   public function setTypeForModuleScripts() {

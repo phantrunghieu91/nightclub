@@ -24,7 +24,7 @@ class CustomPostTypeController {
         'name'            => _x( 'Clubs', 'Post Type General Name', 'gpw' ),
         'singular_name'   => _x( 'Club', 'Post Type Singular Name', 'gpw' ),
         'description'     => _x( 'Information about local clubs, societies, and member organizations, including location, meeting times, and contact details.', 'Post Type description', 'gpw' ),
-        'supports'        => [ 'title', 'excerpt', 'page-attributes', 'thumbnail' ],
+        'supports'        => [ 'title', 'excerpt', 'page-attributes', 'thumbnail', 'comments' ],
         'taxonomies'      => ['music', 'clubs-type'],
         'has_archive'     => true,
         'public'          => true,

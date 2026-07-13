@@ -1,21 +1,17 @@
-<?php 
+<?php
 /**
  * @author Hieu "Jin" Phan Trung
  * * Template: Clubs category page - Content
  */
 ?>
-<section class="clubs">
+<section class="clubs-content">
   <div class="section__inner">
-    <div class="clubs__list">
-      <?php while( have_posts() ) {
-        the_post();
-        get_template_part( 'gpw-templates/clubs/club-card' );
-      } ?>
-      <?php wp_reset_postdata() ?>
+    <div class="clubs-content__list">
     </div>
-    <?php the_posts_pagination( [
-      'prev_text' => '<i class="fa-solid fa-angle-left"></i>',
-      'next_text' => '<i class="fa-solid fa-angle-right"></i>'
-    ] ) ?>
+    <?php get_template_part( 'gpw-templates/clubs/club-card', null, [ 'is_template' => true ] ); ?>
+    <nav class="navigation pagination" aria-label="Clubs pagination" aria-hidden="true">
+      <h2 class="screen-reader-text"><?= __('Clubs pagination', 'gpw') ?></h2>
+      <div class="nav-links"></div>
+    </nav>
   </div>
 </section>

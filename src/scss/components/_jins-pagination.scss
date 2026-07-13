@@ -22,5 +22,9 @@
         color: var(--secondary-color-500);
       }
     }
+
+    i {
+      pointer-events: none;
+    }
   }
 }
